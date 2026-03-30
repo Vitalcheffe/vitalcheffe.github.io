@@ -8,8 +8,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌬</text></svg>" />
+  <meta name="description" content="Vitalcheffe — Systems Engineer. Building high-stakes systems at the intersection of physics, embedded hardware, and quantitative finance." />
+  <meta property="og:title" content="Vitalcheffe — Systems Engineer" />
+  <meta property="og:description" content="Building high-stakes systems at the intersection of physics, embedded hardware, and quantitative finance." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vitalcheffe.github.io" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <style>
     /* ─── Tokens ──────────────────────────────────────────────── */
@@ -86,6 +92,10 @@
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.10em; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--navy); }
+
+    /* ─── Mobile hamburger ────────────────────────────────────── */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 20px; height: 1.5px; background: var(--navy); transition: transform 0.2s; }
 
     /* ─── Hero ────────────────────────────────────────────────── */
     .hero { padding: 180px 0 120px; border-top: none; }
@@ -193,7 +203,9 @@
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
       .nav-inner { padding: 0 20px; }
-      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); padding: 20px; gap: 16px; border-bottom: 1px solid var(--rule); }
+      .nav-links.open { display: flex; }
       .hero { padding: 120px 0 80px; }
       h1 { font-size: clamp(42px, 12vw, 72px); }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -210,6 +222,9 @@
   <nav>
     <div class="nav-inner">
       <a href="#" class="nav-logo">V._ / 001</a>
+      <button class="nav-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
       <ul class="nav-links">
         <li><a href="#projects">Overview</a></li>
         <li><a href="#deep-dives">Deep Dives</a></li>
@@ -243,7 +258,7 @@
 
       <div class="stats-row">
         <div class="stat-cell">
-          <div class="stat-value">4</div>
+          <div class="stat-value">6</div>
           <div class="stat-label">Core Systems</div>
         </div>
         <div class="stat-cell">
@@ -251,12 +266,12 @@
           <div class="stat-label">Years Old</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-value">1.9k+</div>
-          <div class="stat-label">Lines of Physics Math</div>
+          <div class="stat-value">20+</div>
+          <div class="stat-label">Public Repos</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-value">0.3ms</div>
-          <div class="stat-label">Prediction Latency</div>
+          <div class="stat-value">7</div>
+          <div class="stat-label">Open Source PRs</div>
         </div>
       </div>
 
@@ -339,6 +354,87 @@
           <div class="card-footer">
             <a href="#sense-dive" class="card-link">Deep Dive <span class="arrow">↓</span></a>
             <span class="badge badge-quant">Finance</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="card-top">
+            <span class="badge badge-defense">AI · Infra</span>
+            <span class="card-num">P.04</span>
+          </div>
+          <h3 class="card-title">WRAP Nebula</h3>
+          <div class="card-rule"></div>
+          <div class="card-doc">
+            <div class="doc-row">
+              <span class="doc-label">Objective</span>
+              <span class="doc-value">Zero-trust AI agent kernel. Local-first, secure agentic infrastructure with pluggable skill system, policy engine, and multi-provider LLM routing.</span>
+            </div>
+            <div class="doc-row">
+              <span class="doc-label">Stack</span>
+              <div class="doc-stack">
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">Node.js</span>
+                <span class="stack-tag">Zero-Trust</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Vitalcheffe/Wrap" target="_blank" class="card-link">View Repo <span class="arrow">→</span></a>
+            <span class="badge badge-defense">Platform</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="card-top">
+            <span class="badge badge-aerospace">OSINT · Geo</span>
+            <span class="card-num">P.05</span>
+          </div>
+          <h3 class="card-title">xanLens</h3>
+          <div class="card-rule"></div>
+          <div class="card-doc">
+            <div class="doc-row">
+              <span class="doc-label">Objective</span>
+              <span class="doc-value">Open-source GEO audit engine. Ask 7 AI engines if they know your brand — real queries to real models, not heuristics.</span>
+            </div>
+            <div class="doc-row">
+              <span class="doc-label">Stack</span>
+              <div class="doc-stack">
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">Next.js</span>
+                <span class="stack-tag">Multi-LLM</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Vitalcheffe/xanlens" target="_blank" class="card-link">View Repo <span class="arrow">→</span></a>
+            <span class="badge badge-aerospace">Data</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="card-top">
+            <span class="badge badge-quant">Ops</span>
+            <span class="card-num">P.06</span>
+          </div>
+          <h3 class="card-title">OpFlow</h3>
+          <div class="card-rule"></div>
+          <div class="card-doc">
+            <div class="doc-row">
+              <span class="doc-label">Objective</span>
+              <span class="doc-value">Lightweight operations platform for small local businesses. Supabase auth, Stripe billing, real-time dashboard.</span>
+            </div>
+            <div class="doc-row">
+              <span class="doc-label">Stack</span>
+              <div class="doc-stack">
+                <span class="stack-tag">Next.js 14</span>
+                <span class="stack-tag">Supabase</span>
+                <span class="stack-tag">Stripe</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://github.com/Vitalcheffe/opflow" target="_blank" class="card-link">View Repo <span class="arrow">→</span></a>
+            <span class="badge badge-quant">SaaS</span>
           </div>
         </div>
       </div>
@@ -683,7 +779,7 @@
             </li>
             <li>
               <span>Languages</span>
-              <span class="sub">French · English</span>
+              <span class="sub">French · English · Arabic</span>
             </li>
             <li>
               <span>GitHub</span>
